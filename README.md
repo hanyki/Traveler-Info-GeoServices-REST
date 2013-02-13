@@ -5,7 +5,7 @@ This project is just getting started. When completed this web service will simul
 
 [ArcGIS Server Map Service REST]:http://resources.arcgis.com/en/help/rest/apiref/index.html
 
-## Licence ##
+## License ##
 
 Licensed under the [MIT License](http://opensource.org/licenses/MIT)
 

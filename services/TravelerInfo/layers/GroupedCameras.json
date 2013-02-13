@@ -11,14 +11,7 @@
   "minScale" : 0, 
   "maxScale" : 0, 
   "defaultVisibility" : true, 
-  "extent" : {
-    "xmin" : -13851800.9345, 
-    "ymin" : 0, 
-    "xmax" : 0, 
-    "ymax" : 6273759.9253, 
-    "spatialReference" : {
-      "wkid" : 3857
-    }
+  "extent" : {"xmin":-125.31005750014883,"ymin":45.25517031487897,"xmax":-116.2573231251512,"ymax":49.206474441900816,"spatialReference":{"wkid":4326}}
   }, 
   "hasAttachments" : false, 
   "htmlPopupType" : "esriServerHTMLPopupTypeAsHTMLText", 

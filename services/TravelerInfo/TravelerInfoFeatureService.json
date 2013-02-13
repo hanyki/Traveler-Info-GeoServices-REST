@@ -9,8 +9,8 @@
   "description": "Provides WSDOT Traveler API information",
   "copyrightText": "Washington State Department of Transportation",
   "spatialReference": { "wkid": 4326 },
-  "initialExtent" : "{"xmin":-125.31005750014883,"ymin":45.25517031487897,"xmax":-116.2573231251512,"ymax":49.206474441900816,"spatialReference":{"wkid":4326}}", 
-  "fullExtent" : "{"xmin":-125.31005750014883,"ymin":45.25517031487897,"xmax":-116.2573231251512,"ymax":49.206474441900816,"spatialReference":{"wkid":4326}}",
+  "initialExtent" : {"xmin":-125.31005750014883,"ymin":45.25517031487897,"xmax":-116.2573231251512,"ymax":49.206474441900816,"spatialReference":{"wkid":4326}}, 
+  "fullExtent" : {"xmin":-125.31005750014883,"ymin":45.25517031487897,"xmax":-116.2573231251512,"ymax":49.206474441900816,"spatialReference":{"wkid":4326}},
   "allowGeometryUpdates": false,
   "units": "esriDecimalDegrees",
   "layers": [

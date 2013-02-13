@@ -14,7 +14,7 @@
   "allowGeometryUpdates": false,
   "units": "esriDecimalDegrees",
   "layers": [
-    { "id": 0, "name": "cameras" }
+    { "id": 0, "name": "GroupedCameras" }
   ],
   "tables": []
 }

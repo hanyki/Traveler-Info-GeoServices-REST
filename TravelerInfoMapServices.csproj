@@ -101,7 +101,9 @@
   <ItemGroup>
     <Content Include="services\TravelerInfo\TravelerInfoFeatureService.json" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="services\TravelerInfo\layers\Copy of GroupedCameras.json" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="services\TravelerInfo\layers\GroupedCameras.json" />
   </ItemGroup>

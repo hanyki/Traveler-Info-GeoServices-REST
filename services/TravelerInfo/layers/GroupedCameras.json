@@ -42,15 +42,15 @@
 
 	"htmlPopupType" : "esriServerHTMLPopupTypeNone",
 
-	"objectIdField" : "OID",
+	"objectIdField" : "CameraID",
 	"globalIdField" : null,
 	"displayField" : null,
 	"typeIdField" : "<typeIFieldName>",
 	"fields" : [
 		{
-			"name" : "OID", 
-			"type" : "esriFieldTypeOID", 
-			"alias" : "OID"
+			"name" : "CameraID", 
+			"type" : "esriFieldTypeCameraID", 
+			"alias" : "Camera ID"
 		}, 
 		{
 			"name" : "html", 

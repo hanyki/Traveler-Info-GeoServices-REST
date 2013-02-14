@@ -65,6 +65,7 @@
     <Reference Include="ServiceStack.Text">
       <HintPath>packages\ServiceStack.Text.3.9.35\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -87,10 +88,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Feature.cs" />
+    <Compile Include="FeatureLayerQuery.cs" />
+    <Compile Include="FeatureLayerQueryResponse.cs" />
+    <Compile Include="FeatureLayerQueryService.cs" />
+    <Compile Include="Field.cs" />
+    <Compile Include="Geometry\GeometryBase.cs" />
+    <Compile Include="Geometry\SpatialReference.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wsdot\HighwayCameras.cs" />
+    <Compile Include="Wsdot\ITrafficFeature.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -100,9 +111,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="services\TravelerInfo\TravelerInfoFeatureService.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="services\TravelerInfo\layers\Copy of GroupedCameras.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="services\TravelerInfo\layers\GroupedCameras.json" />

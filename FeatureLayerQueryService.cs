@@ -24,31 +24,20 @@ namespace TravelerInfoMapServices
 				select int.Parse(s) 
 				: null;
 
-			IEnumerable<Feature> features;
 
 			if (request.LayerId == _cameraLayerId)
 			{
-				features = GetCameras(objectIds).Select(c => c.ToFeature());
+				return GetCameras(objectIds).ToResponse(request);
 			}
 			else
 			{
-				throw new ArgumentException(string.Format("The specified LayerID is invalid: {0}.", request.LayerId));
+				// throw new ArgumentException(string.Format("The specified LayerID is invalid: {0}.", request.LayerId));
+				return new
+				{
+					code = 500,
+					error = string.Format("The specified LayerID is invalid: {0}.", request.LayerId)
+				};
 			}
-
-
-			if (request.returnCountOnly == true && objectIds == null)
-			{
-
-			}
-			else if (request.returnIdsOnly == true && objectIds == null)
-			{
-
-			}
-			else
-			{
-
-			}
-			throw new NotImplementedException();
 		}
 
 		private static IEnumerable<Camera> GetCameras(IEnumerable<int> objectIds=null)

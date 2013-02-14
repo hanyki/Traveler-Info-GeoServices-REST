@@ -22,8 +22,8 @@ namespace TravelerInfoMapServices
 		public object spatialReference { get; set; }
 		public bool? hasZ { get; set; }
 		public bool? hasM { get; set; }
-		public List<Field> fields { get; set; }
-		public List<Feature> features { get; set; }
+		public IEnumerable<Field> fields { get; set; }
+		public IEnumerable<Feature> features { get; set; }
 	}
 
 	public class FeatureLayerQueryCountResponse: FeatureLayerQueryResponseBase
@@ -33,6 +33,6 @@ namespace TravelerInfoMapServices
 
 	public class FeatureLayerQueryObjectIdsResponse: FeatureLayerQueryObjectIdResponseBase
 	{
-		public List<int> objectIds { get; set; }
+		public IEnumerable<int> objectIds { get; set; }
 	}
 }

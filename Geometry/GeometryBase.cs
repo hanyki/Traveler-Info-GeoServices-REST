@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TravelerInfoMapServices.Geometry
 {
-	public class GeometryBase
+	public abstract class GeometryBase
 	{
 		public SpatialReference spatialReference { get; set; }
 	}

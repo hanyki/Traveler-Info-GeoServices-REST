@@ -4,7 +4,8 @@
 This project is just getting started. When completed this web service will simulate an ArcGIS Server Map Service REST endpoint.
 
 ## Issues ##
-* Camera service "works" in that it generates a response, but the response is missing data and not formatted correctly.
+* Camera service "works" in that it generates a response, but the response is missing data.
+* Need to eliminate "__type" properties from response.
 
 
 ## Links ##

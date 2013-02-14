@@ -14,32 +14,32 @@ namespace TravelerInfoMapServices
 		const int _wkid = 4326;
 		readonly static SpatialReference _spatialReference = new WkidBasedSpatialReference { wkid = _wkid };
 
-		public static Point ToPoint(this RoadwayLocation location)
+		public static Point ToPoint(this RoadwayLocation location, bool includeSpatialReference = false)
 		{
 			return new Point
 			{
 				x = location.Longitude,
 				y = location.Latitude,
-				spatialReference = _spatialReference
+				spatialReference = includeSpatialReference ? _spatialReference : null
 			};
 		}
 
-		public static Feature ToFeature(this ITrafficFeature trafficFeature)
-		{
-			Type type = trafficFeature.GetType();
-			// Get a list of all of the properties of the traffic feature.
-			PropertyInfo[] properties = type.GetProperties();
-			var attributes = (from prop in properties
-						  where prop.PropertyType.IsValueType
-						  select prop).ToDictionary(k => k.Name, pi => pi.GetValue(trafficFeature, null));
-			var roadwayLocation = properties.First(prop => prop.PropertyType == typeof(RoadwayLocation)).GetValue(trafficFeature, null) as RoadwayLocation;
+		////public static Feature ToFeature(this ITrafficFeature trafficFeature)
+		////{
+		////	Type type = trafficFeature.GetType();
+		////	// Get a list of all of the properties of the traffic feature.
+		////	PropertyInfo[] properties = type.GetProperties();
+		////	var attributes = (from prop in properties
+		////				  where prop.PropertyType.IsValueType
+		////				  select prop).ToDictionary(k => k.Name, pi => pi.GetValue(trafficFeature, null));
+		////	var roadwayLocation = properties.First(prop => prop.PropertyType == typeof(RoadwayLocation)).GetValue(trafficFeature, null) as RoadwayLocation;
 
-			return new Feature
-			{
-				attributes = attributes,
-				geometry = roadwayLocation != null ? roadwayLocation.ToPoint() : null
-			};
-		}
+		////	return new Feature
+		////	{
+		////		attributes = attributes,
+		////		geometry = roadwayLocation != null ? roadwayLocation.ToPoint() : null
+		////	};
+		////}
 
 		public static FeatureLayerQueryResponseBase ToResponse(this IEnumerable<Camera> trafficFeatures, FeatureLayerQuery request)
 		{

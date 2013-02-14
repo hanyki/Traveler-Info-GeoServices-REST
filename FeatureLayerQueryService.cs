@@ -42,11 +42,15 @@ namespace TravelerInfoMapServices
 
 		private static IEnumerable<Camera> GetCameras(IEnumerable<int> objectIds=null)
 		{
+
+
 			IEnumerable<Camera> cameras;
-			var client = new HighwayCamerasClient();
+			////var client = new HighwayCamerasClient();
+			var client = new ServiceStack.ServiceClient.Web.JsonServiceClient("http://www.wsdot.wa.gov/traffic/api/HighwayCameras/HighwayCamerasREST.svc/");
 			if (objectIds == null || objectIds.Count() > 0)
 			{
-				cameras = client.GetCameras(_trafficApiCode);
+				////cameras = client.GetCameras(_trafficApiCode);
+				cameras = client.Get<Camera[]>("GetCamerasAsJson?AccessCode=" + _trafficApiCode);
 				if (objectIds != null)
 				{
 					cameras = cameras.Where(c => objectIds.Contains(c.CameraID));
@@ -57,7 +61,8 @@ namespace TravelerInfoMapServices
 				Camera camera = null;
 				try
 				{
-					camera = client.GetCamera(_trafficApiCode, objectIds.First());
+					////camera = client.GetCamera(_trafficApiCode, objectIds.First());
+					camera = client.Get<Camera>("GetCameraAsJson?AccessCode=" + _trafficApiCode);
 				}
 				catch
 				{

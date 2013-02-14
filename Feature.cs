@@ -6,6 +6,6 @@ namespace TravelerInfoMapServices
 	public class Feature
 	{
 		public GeometryBase geometry { get; set; }
-		public Dictionary<string, object> attributes { get; set; }
+		public object attributes { get; set; }
 	}
 }

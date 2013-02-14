@@ -15,12 +15,11 @@ namespace TravelerInfoMapServices
 		{
 			public AppHost() : base("Services", Assembly.GetExecutingAssembly())
 			{
-
+				ServiceStack.Text.JsConfig.ExcludeTypeInfo = true;
 			}
 
 			public override void Configure(Funq.Container container)
 			{
-				
 			}
 		}
 

@@ -12,10 +12,10 @@ namespace TravelerInfoMapServices.Geometry
 
 	public class Point: GeometryBase
 	{
-		public decimal x { get; set; }
-		public decimal y { get; set; }
-		public decimal? z { get; set; }
-		public decimal? m { get; set; }
+		public double x { get; set; }
+		public double y { get; set; }
+		public double? z { get; set; }
+		public double? m { get; set; }
 	}
 
 	/// <summary>
@@ -29,29 +29,29 @@ namespace TravelerInfoMapServices.Geometry
 
 	public class Multipoint: MultiplePointGeometry
 	{
-		public List<List<decimal>> points { get; set; }
+		public List<List<double>> points { get; set; }
 	}
 
 	public class Polyline: MultiplePointGeometry
 	{
-		public List<List<List<decimal>>> paths { get; set; }
+		public List<List<List<double>>> paths { get; set; }
 	}
 
 	public class Polygon: MultiplePointGeometry
 	{
-		public List<List<List<decimal>>> rings { get; set; }
+		public List<List<List<double>>> rings { get; set; }
 	}
 
 	public class Envelope: GeometryBase
 	{
-		public decimal xmin { get; set; }
-		public decimal ymin { get; set; }
-		public decimal xmax { get; set; }
-		public decimal ymax { get; set; }
-		public decimal? zmin { get; set; }
-		public decimal? zmax { get; set; }
-		public decimal? mmin { get; set; }
-		public decimal? mmax { get; set; }
+		public double xmin { get; set; }
+		public double ymin { get; set; }
+		public double xmax { get; set; }
+		public double ymax { get; set; }
+		public double? zmin { get; set; }
+		public double? zmax { get; set; }
+		public double? mmin { get; set; }
+		public double? mmax { get; set; }
 	}
 
 

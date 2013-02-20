@@ -18,8 +18,8 @@ namespace TravelerInfoMapServices
 		{
 			return new Point
 			{
-				x = location.Longitude,
-				y = location.Latitude,
+				x = Convert.ToDouble(location.Longitude),
+				y = Convert.ToDouble(location.Latitude),
 				spatialReference = includeSpatialReference ? _spatialReference : null
 			};
 		}
@@ -69,8 +69,7 @@ namespace TravelerInfoMapServices
 			{
 				return new FeatureLayerQueryResponse
 				{
-					features = trafficFeatures.Select(c => c.ToFeature())
-					
+					features = trafficFeatures.Select(c => c.ToFeature(outSR: request.outSR)),
 				};
 			}
 		}

@@ -1,11 +1,8 @@
 ﻿using ServiceStack.ServiceInterface;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
-using TravelerInfoMapServices.Geometry;
 using Wsdot.Traffic;
 
 namespace TravelerInfoMapServices
@@ -27,7 +24,7 @@ namespace TravelerInfoMapServices
 
 			if (request.LayerId == _cameraLayerId)
 			{
-				return GetCameras(objectIds).ToResponse(request);
+				return GetCameras(objectIds, request.outSR).ToResponse(request);
 			}
 			else
 			{
@@ -40,9 +37,8 @@ namespace TravelerInfoMapServices
 			}
 		}
 
-		private static IEnumerable<Camera> GetCameras(IEnumerable<int> objectIds=null)
+		private static IEnumerable<Camera> GetCameras(IEnumerable<int> objectIds=null, int? outSR=null)
 		{
-
 
 			IEnumerable<Camera> cameras;
 			////var client = new HighwayCamerasClient();

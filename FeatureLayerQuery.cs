@@ -45,7 +45,7 @@ namespace TravelerInfoMapServices
 		/// <summary>
 		/// Either an <see cref="int"/> or a spatialReference object.
 		/// </summary>
-		public string outSR { get; set; }
+		public int? outSR { get; set; }
 
 		public bool? returnIdsOnly { get; set; }
 

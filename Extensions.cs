@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DotSpatial.Projections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -14,13 +15,35 @@ namespace TravelerInfoMapServices
 		const int _wkid = 4326;
 		readonly static SpatialReference _spatialReference = new WkidBasedSpatialReference { wkid = _wkid };
 
-		public static Point ToPoint(this RoadwayLocation location, bool includeSpatialReference = false)
+		public static Point ToPoint(this RoadwayLocation location, bool includeSpatialReference = false, int? outSR = null)
 		{
+			double[] point = { Convert.ToDouble(location.Longitude), Convert.ToDouble(location.Latitude) };
+			SpatialReference sr = null;
+
+			// Project the point if necessary
+			if (outSR.HasValue && outSR != _wkid)
+			{
+				ProjectionInfo startProj = KnownCoordinateSystems.Geographic.World.WGS1984, endProj = null;
+				if (outSR == 3857 || outSR == 102100)
+				{
+					endProj = KnownCoordinateSystems.Projected.World.WebMercator;
+					sr = includeSpatialReference ? new WkidBasedSpatialReference { wkid = outSR.Value } : null;
+				}
+				if (endProj != null)
+				{
+					Reproject.ReprojectPoints(point, null, startProj, endProj, 0, 1);
+				}
+			}
+			else
+			{
+				sr = includeSpatialReference ? new WkidBasedSpatialReference { wkid = _wkid } : null;
+			}
+
 			return new Point
 			{
-				x = Convert.ToDouble(location.Longitude),
-				y = Convert.ToDouble(location.Latitude),
-				spatialReference = includeSpatialReference ? _spatialReference : null
+				x = point[0],
+				y = point[1],
+				spatialReference = sr //includeSpatialReference ? _spatialReference : null
 			};
 		}
 

@@ -1,4 +1,5 @@
 ﻿using ServiceStack.ServiceInterface;
+using ServiceStack.Text;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -21,20 +22,30 @@ namespace TravelerInfoMapServices
 				select int.Parse(s) 
 				: null;
 
+			object output;
+
 
 			if (request.LayerId == _cameraLayerId)
 			{
-				return GetCameras(objectIds, request.outSR).ToResponse(request);
+				output = GetCameras(objectIds, request.outSR).ToResponse(request);
 			}
 			else
 			{
 				// throw new ArgumentException(string.Format("The specified LayerID is invalid: {0}.", request.LayerId));
-				return new
+				output = new
 				{
 					code = 500,
 					error = string.Format("The specified LayerID is invalid: {0}.", request.LayerId)
 				};
 			}
+
+			if (!string.IsNullOrWhiteSpace(request.f) && Regex.IsMatch(request.f, @"p?json", RegexOptions.IgnoreCase))
+			{
+				this.Response.ContentType = "application/json";
+				output = JsonSerializer.SerializeToString<object>(output);
+			}
+
+			return output;
 		}
 
 		private static IEnumerable<Camera> GetCameras(IEnumerable<int> objectIds=null, int? outSR=null)

@@ -27,7 +27,23 @@ namespace TravelerInfoMapServices
 
 			if (request.LayerId == _cameraLayerId)
 			{
-				output = GetCameras(objectIds, request.outSR).ToResponse(request);
+                //output = GetCameras(objectIds, request.outSR).ToResponse(request);
+
+                // Return cameras grouped by point location.  Many cameras are in the same point.
+                int objectId = 0;
+                output = from g in
+                             (from c in GetCameras(objectIds, request.outSR)
+                              group c by c.CameraLocation.ToPoint(false, request.outSR))
+                         select new
+                         {
+                             geometry = g.Key,
+                             attributes = new
+                             {
+                                 ObjectId = objectId++,
+                                 cameras = g
+                             }
+                         };
+
 			}
 			else
 			{

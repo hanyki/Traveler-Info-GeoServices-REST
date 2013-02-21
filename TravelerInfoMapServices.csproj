@@ -90,6 +90,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="map.html" />
+    <Content Include="Scripts\map.js" />
+    <Content Include="services\TravelerInfo\layers\GroupedCameras.txt" />
+    <Content Include="services\TravelerInfo\TravelerInfoFeatureService.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -97,6 +101,7 @@
   <ItemGroup>
     <Compile Include="Extensions.cs" />
     <Compile Include="Feature.cs" />
+    <Compile Include="FeatureLayerInfoQuery.cs" />
     <Compile Include="FeatureLayerQuery.cs" />
     <Compile Include="FeatureLayerQueryResponse.cs" />
     <Compile Include="FeatureLayerQueryService.cs" />
@@ -107,9 +112,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Wsdot\Traffic\Alert.cs" />
+    <Compile Include="Wsdot\Traffic\BorderCrossingData.cs" />
     <Compile Include="Wsdot\Traffic\Camera.cs" />
+    <Compile Include="Wsdot\Traffic\CVRestriction.cs" />
+    <Compile Include="Wsdot\Traffic\FlowData.cs" />
     <Compile Include="Wsdot\Traffic\ITrafficFeature.cs" />
+    <Compile Include="Wsdot\Traffic\PassCondition.cs" />
     <Compile Include="Wsdot\Traffic\RoadwayLocation.cs" />
+    <Compile Include="Wsdot\Traffic\TravelTimeRoute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -118,13 +134,10 @@
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="services\TravelerInfo\TravelerInfoFeatureService.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="services\TravelerInfo\layers\GroupedCameras.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
